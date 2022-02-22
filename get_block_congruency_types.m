@@ -1,9 +1,10 @@
-%% helper func.. a bit of a black box but it works.. returns a TEST_BLOCKSx1
-%string array with congruent/incongruent ordered depending on the reward
-%probability of the block
-%this is needed in order to ensure that the first iteration of 0.2-0.8
-%reward probs is congruent and the second is incongruent (rather than 2
-%congruent and 2 incongruent
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The inner workings of this function remain a bit of a black box but it is
+% needed in order to ensure that the first iteration of 0.2-0.8
+% reward probs is congruent and the second is incongruent (rather than 2
+% congruent and 2 incongruent). I think it also works for more than 2
+% iterations.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [block_congruency_type] = get_block_congruency_types(reward_probabilities_order)
     TEST_BLOCKS = 4;
     REWARD_PROBABILITIES = [["0.2" "0.8"]; ["0.4" "0.6"]];

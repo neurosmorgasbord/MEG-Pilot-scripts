@@ -1,4 +1,11 @@
-%% myfunc
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Draw the food items and the red/blue borders. Here the argument names
+% deviate ever so slightly from the ones in the trial data object. In the
+% trial data object, they are named item_1_id (here = left_food_item_id),
+% item_2_id (here = right_food_item_id) and item_1_border_color (here =
+% left_border_color). This can be fixed soon. Only left border color is
+% provided as the other one can be inferred.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [] = draw_food_items_and_borders(window, screenXpixels, screenYpixels, ...
     left_food_item_id, right_food_item_id, ...
     left_border_color)

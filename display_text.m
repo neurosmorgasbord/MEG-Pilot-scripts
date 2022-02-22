@@ -1,3 +1,6 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Temp function adapted from JZ
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function display_text(window, textString, fontsize, Yoffset, ratio, color)
 
     window_rect = Screen('Rect', window); % gets same info a windowRect

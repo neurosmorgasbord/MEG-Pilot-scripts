@@ -1,9 +1,9 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% The function uses the parameters and the current trial's data to display
-% everything in the trial, including fixation cross, food items and
-% borders, trial type symbols, get the response, save the data and provide
-% feedback
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% myfunc
+%function [data] = run_single_main_trial(window, screenXpixels, screenYpixels, grey_color, black_color, ...
+%                                    images_time, time_limit, feedback_duration, too_quick_response_threshold, ...
+%                                    left_food_item_id, right_food_item_id, ...
+%                                    left_border_color, ...
+%                                    trial_type)
 function [data] = run_single_main_trial(window, exp_parameters, curr_trial_data)
 
     %% Set fixation cross
@@ -31,20 +31,20 @@ function [data] = run_single_main_trial(window, exp_parameters, curr_trial_data)
     data = rand(10, 1);
     if ~isnan(rt)
         if key_pressed == "LeftArrow"
-            curr_trial_data.selected_item = 1;
+            selected_item = 1;
         else
-            curr_trial_data.selected_item = 2;
+            selected_item = 2;
         end
 
-        curr_trial_data.preference_response_consistent = 0;
+        preference_response_consistent = 0;
         if curr_trial_data.pt_trial == true
-            curr_trial_data.preference_response_consistent = 1;
+            preference_response_consistent = 1;
         end
-        if (str2double(curr_trial_data.items_subjective_value_difference) > 0 && curr_trial_data.selected_item == 2) || (str2double(curr_trial_data.items_subjective_value_difference) < 0 && curr_trial_data.selected_item == 1)
-            curr_trial_data.preference_response_consistent = 1;
+        if (str2double(curr_trial_data.items_subjective_value_difference) > 0 && selected_item == 2) || (str2double(curr_trial_data.items_subjective_value_difference) < 0 && selected_item == 1)
+            preference_response_consistent = 1;
         end
 
-        if rt < exp_parameters.STAGE_2_TOO_QUICK_RESPONSE_THRESHOLD/1000
+        if rt < exp_parameters.STAGE_2_TOO_QUICK_RESPONSE_THRESHOLD
             acquired_points = 0;
         else
             acquired_points = get_acquired_points(curr_trial_data);
@@ -53,19 +53,21 @@ function [data] = run_single_main_trial(window, exp_parameters, curr_trial_data)
     end
 
     %% show feedback
+    disp()
+    disp(acquired_points)
     if isnan(rt) %too slow
-            %these must be colored red/green
-            temp_show_text(window, exp_parameters, 'TOO SLOW!', exp_parameters.STAGE_2_FEEDBACK_DURATION) 
+        %these must be colored red/green
+        temp_show_text(window, exp_parameters, 'TOO SLOW!', exp_parameters.STAGE_2_FEEDBACK_DURATION) 
     elseif rt < exp_parameters.STAGE_2_TOO_QUICK_RESPONSE_THRESHOLD/1000 %too quick
         temp_show_text(window, exp_parameters, 'TOO QUICK!', exp_parameters.STAGE_2_FEEDBACK_DURATION)
+
     else %regular feedback
         if acquired_points > 0
             temp_show_text(window, exp_parameters, '+100 points!', exp_parameters.STAGE_2_FEEDBACK_DURATION)
         else
             temp_show_text(window, exp_parameters, '0 points!', exp_parameters.STAGE_2_FEEDBACK_DURATION)
-        end
     end
-
+    
     %% ITI
     [VBLTimestamp, StimulusOnsetTime, FlipTimestamp, Missed, Beampos]=Screen('Flip', window, []); %removes previous items from screen
     pause(round(randi([800 1500], 1)/1000, 2))

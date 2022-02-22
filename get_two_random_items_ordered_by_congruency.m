@@ -1,3 +1,12 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Here I get a item trial pair but I make sure that the position of each
+% item (1/2) is set up in accordance to the to the other details of the
+% trial. For instance, if the left item's reward probability this trial
+% needs to be 0.4 and the right item 0.6 AND the trial is congruent, then
+% the item with the lower subjective value needs to be on the left.
+% Likewise, if the trial is incongruent, the item with the higher
+% subjective value needs to be on the left.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [curr_trial_item_pair] = get_two_random_items_ordered_by_congruency(selected_items_based_on_stage_1_ratings, congruency_type, item_1_reward_prob, item_2_reward_prob)
     curr_trial_item_pair = [];
 

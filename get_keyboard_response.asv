@@ -4,9 +4,8 @@
 % Response start time is used to measure the rt, as desired
 % The final argument gives a time limit to wait for the response (defaults
 % to no time limit
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [key_pressed, rt] = get_keyboard_response(accepted_keys, response_start_time, time_limit_ms)
-    % default to no time limit
+    % de
     if ~exist('time_limit_ms', 'var')
         time_limit_ms = Inf;
     end

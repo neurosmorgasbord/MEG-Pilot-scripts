@@ -10,7 +10,6 @@
 %data. View each function for an explanation of what it does.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Set up
-
 % Clear the workspace and the screen
 sca;
 close all;
@@ -31,13 +30,11 @@ try
     %% show intro instructions
     temp_show_text(window, exp_parameters, 'Intro instructions go here.')
 
-    pause(0.1); %find a better way to wait until key is released
+    pause(0.5);
 
     %% show consent form
     temp_show_text(window, exp_parameters, 'Consent form goes here.')
 
-    pause(0.1); %find a better way to wait until key is released
-    
     %% Run practice trials
     pt_trials_array = get_pt_trials_array(exp_parameters);
     for pt_block_ind = 1:exp_parameters.PT_BLOCKS
@@ -59,7 +56,15 @@ try
             % because the test trial ind is refreshed for each block, we
             % calculate the true trial number here
             current_test_trial_number = ((test_block_ind-1)*exp_parameters.TEST_TRIALS_PER_BLOCK) + test_trial_ind;
-            trial_data = run_single_main_trial(window, exp_parameters, pt_trials_array(current_pt_trial_number));  
+            trial_data = run_single_main_trial(window, ...
+                            exp_parameters.SCREEN_X_PIXELS, exp_parameters.SCREEN_Y_PIXELS, exp_parameters.GREY_COLOR, exp_parameters.BLACK_COLOR, ...
+                            exp_parameters.STAGE_2_TRIAL_IMAGES_TIME, exp_parameters.STAGE_2_TRIAL_TIME_LIMIT, ...
+                            exp_parameters.STAGE_2_FEEDBACK_DURATION, exp_parameters.STAGE_2_TOO_QUICK_RESPONSE_THRESHOLD,...
+                            test_trials_array(current_test_trial_number).item_1_id, ...
+                            test_trials_array(current_test_trial_number).item_2_id, ...
+                            test_trials_array(current_test_trial_number).item_1_border_color, ...
+                            test_trials_array(current_test_trial_number).trial_type);
+            
             
         end
         % show interblock screen in a similar manner as instructions

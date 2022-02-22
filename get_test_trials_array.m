@@ -1,3 +1,7 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Acquired the trials array for the test trials. See README for details on
+% this array.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [test_trials_array] = get_test_trials_array(exp_parameters)
     selected_items_based_on_stage_1_ratings = struct();
     for item_ind=1:length(exp_parameters.ALL_ITEMS)

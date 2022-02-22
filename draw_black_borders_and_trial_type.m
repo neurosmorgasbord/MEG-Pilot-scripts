@@ -1,4 +1,10 @@
-%% myfunc
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Function to draw the black border and the trial type
+% Crucially, it default to looking at the trial_stim folder for the pref
+% and reward icons.
+% Black color refers to the index valeu for black (defined in the
+% experiment parameters). Trial type refers to preference/reward.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [] = draw_black_borders_and_trial_type(window, black_color, screenXpixels, screenYpixels, trial_type)
 
     % Pen width for the frames

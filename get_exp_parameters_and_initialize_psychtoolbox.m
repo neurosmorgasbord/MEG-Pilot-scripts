@@ -1,3 +1,8 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Two things happening here:
+% 1) Initialize experiment paramters (number of trials etc)
+% 2) Set up Psychtoolbox and a window object
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [exp_parameters, window]=get_exp_parameters_and_initialize_psychtoolbox()
     exp_parameters = struct();
 
@@ -18,7 +23,6 @@ function [exp_parameters, window]=get_exp_parameters_and_initialize_psychtoolbox
     exp_parameters.STAGE_2_TRIAL_IMAGES_TIME = 1200;
     exp_parameters.STAGE_2_TRIAL_TIME_LIMIT = 2000;
     exp_parameters.STAGE_2_FEEDBACK_DURATION = 1000;
-    exp_parameters.STAGE_2_TOO_SLOW_FEEDBACK_DURATION = 750;
     exp_parameters.STAGE_2_TOO_QUICK_RESPONSE_THRESHOLD = 200;
 
     exp_parameters.POINTS_COUNTER = 0;
