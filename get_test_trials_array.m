@@ -1,11 +1,4 @@
-function [stage_2_curr_pp_trials] = get_stage_2_curr_pp_trials(exp_parameters)
-    %ALL_ITEMS = ["0014" "0028" "0041" "0070" "0080" "0116" "0162" "0187" "0189" "0199" "0249" "0277" "0286" "0287" "0308" "0310" "0313" "0319" "0360" "0365" "0380" "0399" "0400" "0421" "0422" "0459" "0460" "0467" "0468" "0496" "0504" "0507" "0515" "0569" "0571" "0614" "0626" "0755" "0801" "0820"];
-    %TEST_TRIALS_N = 16;
-    %TEST_BLOCKS = 4;
-    %TEST_TRIALS_PER_BLOCK = TEST_TRIALS_N/TEST_BLOCKS;
-    %REWARD_TO_PREF_TRIALS_RATIO = 0.5;
-    %REWARD_PROBABILITIES = [["0.2" "0.8"]; ["0.4" "0.6"]];
-    %REWARD_PROBABILITIES_ITERATIONS = TEST_BLOCKS/length(REWARD_PROBABILITIES); %i.e. number of times to repeat each reward prob pair
+function [test_trials_array] = get_test_trials_array(exp_parameters)
     selected_items_based_on_stage_1_ratings = struct();
     for item_ind=1:length(exp_parameters.ALL_ITEMS)
         selected_items_based_on_stage_1_ratings(item_ind).item_id = exp_parameters.ALL_ITEMS(item_ind);
@@ -13,11 +6,11 @@ function [stage_2_curr_pp_trials] = get_stage_2_curr_pp_trials(exp_parameters)
     end
 
     %% initialize variables
-    stage_2_curr_pp_trials_columns = ["pt_trial"; "block"; "trial"; "item_1_id"; "item_1_subjective_value"; "item_1_subjective_value_category"; "item_1_border_color"; "item_1_reward_prob"; "item_2_id"; "item_2_subjective_value"; "item_2_subjective_value_category"; "item_2_border_color"; "item_2_reward_prob"];
-    stage_2_curr_pp_trials = struct();
+    test_trials_array_columns = ["pt_trial"; "block"; "trial"; "item_1_id"; "item_1_subjective_value"; "item_1_subjective_value_category"; "item_1_border_color"; "item_1_reward_prob"; "item_2_id"; "item_2_subjective_value"; "item_2_subjective_value_category"; "item_2_border_color"; "item_2_reward_prob"];
+    test_trials_array = struct();
     for trial_ind=1:exp_parameters.TEST_TRIALS_N
-        for col_ind=1:length(stage_2_curr_pp_trials_columns)
-            stage_2_curr_pp_trials(trial_ind).(stage_2_curr_pp_trials_columns(col_ind)) = [];
+        for col_ind=1:length(test_trials_array_columns)
+            test_trials_array(trial_ind).(test_trials_array_columns(col_ind)) = [];
         end
     end
 
@@ -91,21 +84,21 @@ function [stage_2_curr_pp_trials] = get_stage_2_curr_pp_trials(exp_parameters)
             item_1_subjective_value = selected_items_based_on_stage_1_ratings(strcmp([selected_items_based_on_stage_1_ratings.item_id], curr_trial_item_pair(1))).stage_1_rating;
             item_2_subjective_value = selected_items_based_on_stage_1_ratings(strcmp([selected_items_based_on_stage_1_ratings.item_id], curr_trial_item_pair(2))).stage_1_rating;
             test_trial_ind = ((block_ind-1)*exp_parameters.TEST_TRIALS_PER_BLOCK + trial_ind_per_block);
-            stage_2_curr_pp_trials(test_trial_ind).pt_trial = false;
-            stage_2_curr_pp_trials(test_trial_ind).block = block_ind;
-            stage_2_curr_pp_trials(test_trial_ind).trial = test_trial_ind;
-            stage_2_curr_pp_trials(test_trial_ind).item_1_id = curr_trial_item_pair(1);
-            stage_2_curr_pp_trials(test_trial_ind).item_1_subjective_value = item_1_subjective_value;
-            stage_2_curr_pp_trials(test_trial_ind).item_1_subjective_value_category = "";
-            stage_2_curr_pp_trials(test_trial_ind).item_1_border_color = curr_block_border_colors(trial_ind_per_block, 1);
-            stage_2_curr_pp_trials(test_trial_ind).item_1_reward_prob = curr_block_color_reward_prob_pair.(curr_block_border_colors(trial_ind_per_block, 1));
-            stage_2_curr_pp_trials(test_trial_ind).item_2_id = curr_trial_item_pair(2);
-            stage_2_curr_pp_trials(test_trial_ind).item_2_subjective_value = item_2_subjective_value;
-            stage_2_curr_pp_trials(test_trial_ind).item_2_subjective_value_category = "";
-            stage_2_curr_pp_trials(test_trial_ind).item_2_border_color = curr_block_border_colors(trial_ind_per_block, 2);
-            stage_2_curr_pp_trials(test_trial_ind).item_2_reward_prob = curr_block_color_reward_prob_pair.(curr_block_border_colors(trial_ind_per_block, 2));
-            stage_2_curr_pp_trials(test_trial_ind).items_subjective_value_difference = item_2_subjective_value - item_1_subjective_value;
-            stage_2_curr_pp_trials(test_trial_ind).trial_type = curr_block_trial_types(trial_ind_per_block);
+            test_trials_array(test_trial_ind).pt_trial = false;
+            test_trials_array(test_trial_ind).block = block_ind;
+            test_trials_array(test_trial_ind).trial = test_trial_ind;
+            test_trials_array(test_trial_ind).item_1_id = curr_trial_item_pair(1);
+            test_trials_array(test_trial_ind).item_1_subjective_value = item_1_subjective_value;
+            test_trials_array(test_trial_ind).item_1_subjective_value_category = "";
+            test_trials_array(test_trial_ind).item_1_border_color = curr_block_border_colors(trial_ind_per_block, 1);
+            test_trials_array(test_trial_ind).item_1_reward_prob = curr_block_color_reward_prob_pair.(curr_block_border_colors(trial_ind_per_block, 1));
+            test_trials_array(test_trial_ind).item_2_id = curr_trial_item_pair(2);
+            test_trials_array(test_trial_ind).item_2_subjective_value = item_2_subjective_value;
+            test_trials_array(test_trial_ind).item_2_subjective_value_category = "";
+            test_trials_array(test_trial_ind).item_2_border_color = curr_block_border_colors(trial_ind_per_block, 2);
+            test_trials_array(test_trial_ind).item_2_reward_prob = curr_block_color_reward_prob_pair.(curr_block_border_colors(trial_ind_per_block, 2));
+            test_trials_array(test_trial_ind).items_subjective_value_difference = item_2_subjective_value - item_1_subjective_value;
+            test_trials_array(test_trial_ind).trial_type = curr_block_trial_types(trial_ind_per_block);
 
         end
     end
