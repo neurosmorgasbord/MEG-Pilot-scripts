@@ -30,9 +30,9 @@ function [] = draw_food_items_and_borders(window, screenXpixels, screenYpixels, 
     end
     
     % get food item textures
-    food_item_left = imread(strcat('food_items/', left_food_item_id, '.jpg'));
+    food_item_left = imread(strcat('img/food_items/', left_food_item_id, '.jpg'));
     food_item_left_texture = Screen('MakeTexture', window, food_item_left);
-    food_item_right = imread(strcat('food_items/', right_food_item_id, '.jpg'));
+    food_item_right = imread(strcat('img/food_items/', right_food_item_id, '.jpg'));
     food_item_right_texture = Screen('MakeTexture', window, food_item_right);
     
     % Make a base rectangle for the images as a container

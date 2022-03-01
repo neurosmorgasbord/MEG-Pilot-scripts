@@ -12,9 +12,9 @@ function [] = draw_black_borders_and_trial_type(window, black_color, screenXpixe
     
     % get trial type texture
     if trial_type == "preference"
-        trial_type_img = imread('trial_stim/pref_icon.png');
+        trial_type_img = imread('img/pref_icon.png');
     elseif trial_type == "reward"
-        trial_type_img = imread('trial_stim/reward_icon.png');
+        trial_type_img = imread('img/reward_icon.png');
     end
     trial_type_texture = Screen('MakeTexture', window, trial_type_img);
     image_width = screenXpixels*0.1;
