@@ -1,8 +1,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Function to draw the black border and the trial type
-% Crucially, it default to looking at the trial_stim folder for the pref
+% Crucially, it default to looking at the img folder for the pref
 % and reward icons.
-% Black color refers to the index valeu for black (defined in the
+% Black color refers to the index value for black (defined in the
 % experiment parameters). Trial type refers to preference/reward.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [] = draw_black_borders_and_trial_type(window, black_color, screenXpixels, screenYpixels, trial_type)
@@ -12,10 +12,14 @@ function [] = draw_black_borders_and_trial_type(window, black_color, screenXpixe
     
     % get trial type texture
     if trial_type == "preference"
-        trial_type_img = imread('img/pref_icon.png');
+        [trial_type_img, ~, alpha] = imread('img/pref_icon.png');
     elseif trial_type == "reward"
-        trial_type_img = imread('img/reward_icon.png');
+        [trial_type_img, ~, alpha] = imread('img/reward_icon.png');
     end
+    %I dont know why but I need to save the alpha channel from the imread
+    %and then overwrite the img's matrx's something to that alpha for the
+    %transparent background to work, see https://stackoverflow.com/a/40383117/13078832
+    trial_type_img(:, :, 4) = alpha;
     trial_type_texture = Screen('MakeTexture', window, trial_type_img);
     image_width = screenXpixels*0.1;
     image_height = image_width;

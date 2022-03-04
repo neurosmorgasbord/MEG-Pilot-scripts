@@ -2,12 +2,12 @@
 % Acquired the trials array for the test trials. See README for details on
 % this array.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [test_trials_array] = get_test_trials_array(exp_parameters)
-    selected_items_based_on_stage_1_ratings = struct();
-    for item_ind=1:length(exp_parameters.ALL_ITEMS)
-        selected_items_based_on_stage_1_ratings(item_ind).item_id = exp_parameters.ALL_ITEMS(item_ind);
-        selected_items_based_on_stage_1_ratings(item_ind).stage_1_rating = randi([1 100], 1);
-    end
+function [test_trials_array] = get_test_trials_array(exp_parameters, selected_items_based_on_stage_1_ratings)
+    %selected_items_based_on_stage_1_ratings = struct();
+    %for item_ind=1:length(exp_parameters.ALL_ITEMS)
+    %    selected_items_based_on_stage_1_ratings(item_ind).item_id = exp_parameters.ALL_ITEMS(item_ind);
+    %    selected_items_based_on_stage_1_ratings(item_ind).stage_1_rating = randi([1 100], 1);
+    %end
 
     %% initialize variables
     test_trials_array_columns = ["pt_trial"; "block"; "trial"; "item_1_id"; "item_1_subjective_value"; "item_1_subjective_value_category"; "item_1_border_color"; "item_1_reward_prob"; "item_2_id"; "item_2_subjective_value"; "item_2_subjective_value_category"; "item_2_border_color"; "item_2_reward_prob"];

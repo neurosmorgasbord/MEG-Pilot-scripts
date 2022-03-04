@@ -9,18 +9,18 @@
 % and 0.46 instances of 0; then it is shuffled
 % deciding whether the PP won is by drawing a random element
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [acquired_points] = get_acquired_points(trial_data)
+function [acquired_points] = get_acquired_points(trial_data, selected_item, preference_response_consistent)
     points_to_win = 100;
     if trial_data.trial_type == "preference"
-        if trial_data.preference_response_consistent == 1
+        if preference_response_consistent == 1
             odds_of_winning = 1;
         else
             odds_of_winning = 0;
         end
     elseif trial_data.trial_type == "reward"
-        if trial_data.selected_item == 1
+        if selected_item == 1
             odds_of_winning = str2double(trial_data.item_1_reward_prob);
-        elseif trial_data.selected_item == 2
+        elseif selected_item == 2
             odds_of_winning = str2double(trial_data.item_2_reward_prob);
         end
     else
