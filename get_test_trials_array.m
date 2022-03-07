@@ -103,7 +103,6 @@ function [test_trials_array] = get_test_trials_array(exp_parameters, selected_it
             test_trials_array(test_trial_ind).item_2_reward_prob = curr_block_color_reward_prob_pair.(curr_block_border_colors(trial_ind_per_block, 2));
             test_trials_array(test_trial_ind).items_subjective_value_difference = item_2_subjective_value - item_1_subjective_value;
             test_trials_array(test_trial_ind).trial_type = curr_block_trial_types(trial_ind_per_block);
-
         end
     end
 end

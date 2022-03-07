@@ -22,16 +22,17 @@ function []=run_experiment(subject_id, pt_block, blocks, filename)
     
     %in case no values are provided when calling, we set some default ones
     %during testing
-    if ~exist(subject_id, 'var') || isempty(subject_id)
+    if ~exist('subject_id', 'var') || isempty(subject_id)
         subject_id = datestr(now, 'yyyymmdd-HHMMSS');
     end
-    if ~exist(pt_block, 'var') || isempty(pt_block)
+    if ~exist('pt_block', 'var') || isempty(pt_block)
         pt_block = 0;
     end
-    if ~exist(blocks, 'var') || isempty(blocks)
+    if ~exist('blocks', 'var') || isempty(blocks)
+        display('vleze2')
         blocks = [1, 2];
     end
-    if ~exist(filename, 'var') || isempty(filename)
+    if ~exist('filename', 'var') || isempty(filename)
         % Uncomment the first line to test with real data, otherwise random
         % data will be generated
         %filename = '5ac78faa68b65b00018d72a1_MAIN_complete_finisher_2022-02-16_16h45.55.104_Pie_value.csv';
@@ -39,7 +40,7 @@ function []=run_experiment(subject_id, pt_block, blocks, filename)
     end
 
     if max(blocks) > 4
-        error('Blocks cannot exceed for. Entered blocks were ' string(blocks))
+        %error('Blocks cannot exceed for. Entered blocks were ' string(blocks))
     end
 
     try

@@ -8,7 +8,7 @@ function [exp_parameters]=get_exp_parameters()
     %exp_parameters.PT_TRIALS_PER_BLOCK = 10;
     %exp_parameters.PT_BLOCKS = exp_parameters.PT_TRIALS_N / exp_parameters.PT_TRIALS_PER_BLOCK;
 
-    exp_parameters.TEST_TRIALS_N = 4;
+    exp_parameters.TEST_TRIALS_N = 8;
     exp_parameters.TEST_TRIALS_PER_BLOCK = 2;
     exp_parameters.TEST_BLOCKS = exp_parameters.TEST_TRIALS_N / exp_parameters.TEST_TRIALS_PER_BLOCK;
 

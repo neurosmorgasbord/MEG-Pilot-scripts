@@ -19,7 +19,7 @@ function [selected_item, preference_response_consistent, acquired_points]=add_da
         if curr_trial_data.pt_trial == true
             preference_response_consistent = 1;
         end
-        if (str2double(curr_trial_data.items_subjective_value_difference) > 0 && selected_item == 2) || (str2double(curr_trial_data.items_subjective_value_difference) < 0 && selected_item == 1)
+        if (curr_trial_data.items_subjective_value_difference > 0 && selected_item == 2) || (curr_trial_data.items_subjective_value_difference < 0 && selected_item == 1)
             preference_response_consistent = 1;
         end
         %calculate acuiqred points and add to points counter

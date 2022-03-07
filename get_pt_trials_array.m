@@ -28,16 +28,16 @@ function [pt_trials_array] = get_pt_trials_array(exp_parameters)
         pt_trials_array(pt_trial_ind).block = 1;
         pt_trials_array(pt_trial_ind).trial = pt_trial_ind;
         pt_trials_array(pt_trial_ind).item_1_id = curr_trial_item_pair(1);
-        pt_trials_array(pt_trial_ind).item_1_subjective_value = "";
+        pt_trials_array(pt_trial_ind).item_1_subjective_value = 0;
         pt_trials_array(pt_trial_ind).item_1_subjective_value_category = "";
         pt_trials_array(pt_trial_ind).item_1_border_color = curr_trial_border_colors(1);
         pt_trials_array(pt_trial_ind).item_1_reward_prob = reward_probs.(curr_trial_border_colors(1));
         pt_trials_array(pt_trial_ind).item_2_id = curr_trial_item_pair(2);
-        pt_trials_array(pt_trial_ind).item_2_subjective_value = "";
+        pt_trials_array(pt_trial_ind).item_2_subjective_value = 0;
         pt_trials_array(pt_trial_ind).item_2_subjective_value_category = "";
         pt_trials_array(pt_trial_ind).item_2_border_color = curr_trial_border_colors(2);
         pt_trials_array(pt_trial_ind).item_2_reward_prob = reward_probs.(curr_trial_border_colors(2));
-        pt_trials_array(pt_trial_ind).items_subjective_value_difference = "";
+        pt_trials_array(pt_trial_ind).items_subjective_value_difference = 0;
         pt_trials_array(pt_trial_ind).trial_type = trial_types(pt_trial_ind, 1);
 
     end
