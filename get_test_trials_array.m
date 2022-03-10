@@ -71,6 +71,7 @@ function [test_trials_array] = get_test_trials_array(exp_parameters, selected_it
         
         %set up a 1d array with trial types for the current block
         curr_block_trial_types = [repmat("reward", round(exp_parameters.TEST_TRIALS_PER_BLOCK*exp_parameters.REWARD_TO_PREF_TRIALS_RATIO), 1); repmat("preference", round(exp_parameters.TEST_TRIALS_PER_BLOCK-(exp_parameters.TEST_TRIALS_PER_BLOCK*exp_parameters.REWARD_TO_PREF_TRIALS_RATIO)), 1)];
+        curr_block_trial_types = curr_block_trial_types(randperm(size(curr_block_trial_types, 1)), :); %shuffle order
 
         %set up correct colors for each item (col 1 is item 1 and col 2 is
         %item 2)
