@@ -56,7 +56,7 @@ function []=run_experiment(subject_id, pt_block, blocks, filename)
         else
             %get stage 1 ratings
             if exist(filename, 'file') == 2
-                selected_items_based_on_stage_1_ratings = get_selected_items_based_on_stage_1_ratings(filename);
+                [selected_items_based_on_stage_1_ratings]=temp_selected_ratings_from_R(filename);
             else
                 warning('Participant filename with stage 1 ratings not found! Generating random ratings. Start over and correct participant id and/or filename.')
                 r = input('Do you want to continue with random data (enter y if this is testing)? (Y/N): ', 's');
